@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +10,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>My JSP 'index.jsp' starting page</title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,10 +18,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <h1>SpringMVC实例</h1>
+    <form action="${pageContext.request.contextPath}/toLogin" method="POST">
+    <div>
+    username:<input tyepe="text" name="username"/>
+    </div>
+    <div>
+    password:<input type="password" name="password"/>
+    </div>
+    <input type="submit" value="登录"/><input type="reset" value="重置"/>
+    </form>
+    <a href="${pageContext.request.contextPath}/toCheck?username=cx&password=123">检查一下</a>
   </body>
 </html>
