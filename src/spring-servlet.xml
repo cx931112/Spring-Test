@@ -5,11 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd ">
 	
-
+<!--扫包，并让注解生效-->
 	<context:component-scan base-package="com.springmvc.controller"></context:component-scan>
 
    	<mvc:annotation-driven></mvc:annotation-driven>
    <mvc:default-servlet-handler /><!-- 对静态资源的访问 -->
+   <!--配置springmvc的视图渲染器，是返回的试图前缀后后缀名为指定的格式  -->
  	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
  		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property> 
  		<property name="prefix" value="/WEB-INF/"></property> 

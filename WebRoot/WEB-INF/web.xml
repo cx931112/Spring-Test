@@ -9,11 +9,21 @@
  <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 请求进入到DispatcherServlet -->
   <servlet>
   <servlet-name>spring</servlet-name>
   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <init-param>
+  <param-name>contextConfigLocation</param-name>
+  <!--当为classpath:时会到src目录下查找需要的文件 ，classpath*:会连jar包一起查找 -->
+  <!--如果在WEB-INF目录下则/WEB-INF/spring-servlet.xml  -->
+  <!--当不写该配置时则默认所需xml文件在WEB-INF下，没有该文件将报错  -->
+  <param-value>classpath:spring-servlet.xml</param-value>
+  </init-param>
   <load-on-startup>1</load-on-startup>
   </servlet>
+  <!-- 配置DispatcherServlet所要拦截的url,此处"/"为拦截所有请求 -->
   <servlet-mapping>
   <servlet-name>spring</servlet-name>
   <url-pattern>/</url-pattern>
