@@ -9,13 +9,14 @@
 	<context:component-scan base-package="com.springmvc.controller"></context:component-scan>
 <!--为controller分发请求  -->
    	<mvc:annotation-driven></mvc:annotation-driven>
+   	
    	<!--对image,.css,.jsp等静态资源的访问，DispatcherServlet拦截了所有请求，同时对静态资源的访问请求也被拦截，由于不能通过配置bean或扫包的方式让 springmvc识别到所以需要特殊处理，该url不能映射，该方式是默认使用springmvc默认的访问静态资源的方式 -->
    <mvc:default-servlet-handler />
 <!--对静态资源的另一种访问方式，可以配置多个-->
 <!-- <mvc:resources location="/WEB-INF/view/images/" mapping="/images/**"/>   -->
-<!-- <mvc:resources location="/WEB-INF/" mapping="/**"/>  --> 
+<!-- <mvc:resources location="/css/" mapping="/css/**"/>   -->
 <!-- <mvc:resources location="/WEB-INF/view/css/" mapping="/css/**"/>  -->
-   <!--配置springmvc的视图渲染器，是返回的试图前缀后后缀名为指定的格式  -->
+   <!--配置springmvc的视图渲染器，是返回的试图前缀和后缀名为指定的格式，并把view返回给DispatcherServlet，并不是通过请求的方式 -->
  	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
  		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property> 
  		<property name="prefix" value="/WEB-INF/"></property> 
