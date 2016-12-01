@@ -15,18 +15,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <script type="text/javascript">
-    document.getElementById("check").onclick=function(){
+    function checkUser(){
+    alert("进入该方法！");
     var username=document.getElementById("username");
     var password=document.getElementById("password");
     var settings={
     url:'${pageContext.request.contextPath}/toAjax',
+    type:'POST',
+    //dataType设置返回值类型
+    dataType:'text',
+    data:{'username':document.getElementById('username').value,'password':document.getElementById('password').value},
+    success:function(data){
+    alert(data);
+    }
     
+    };
+    $.ajax(settings);
     }
-    }
+
     </script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
   </head>
   
   <body>
@@ -38,7 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div>
     password:<input type="password" name="password" id="password"/>
     </div>
-    <input type="submit" value="登录"/><input type="button" value="检测" id="check"/>
+    <input type="submit" value="登录"/>
+    <input type="button"  value="检测" id="check" onclick="checkUser()"/>
     </form>
     <a href="${pageContext.request.contextPath}/toCheck?username=cx&password=123">检查一下</a>
   </body>

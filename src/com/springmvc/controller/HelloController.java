@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
 
 
 import org.springframework.stereotype.Controller;
@@ -118,9 +117,8 @@ public void toAjax(String username,String password,HttpServletResponse response)
 	user.setUsername(username);
 	user.setPassword(password);
 	//将对象转换成json对象，再将json对象转换成字符串的方法，需要使用到json-lib-*-jdk.jar
-	JSONObject json=JSONObject.fromObject(user);
-	String jsonString=json.toString();
-	out.write(jsonString);
+
+	out.write("hello");
 /*	
  * 将json字符串转换成对象
  * JSONObject json1=JSONObject.fromObject(jsonString);
