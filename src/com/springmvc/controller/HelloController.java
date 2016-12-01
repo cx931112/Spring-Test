@@ -1,10 +1,20 @@
 package com.springmvc.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONObject;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.springmvc.entity.User;
 
 @Controller
 public class HelloController {
@@ -99,7 +109,22 @@ public ModelAndView test10(User user){
         return new ModelAndView(new RedirectView("test9.do"));//test9.do?age=22 重定向
     }
 }
+ * @throws IOException 
  */
-
+@RequestMapping(value="toAjax")
+public void toAjax(String username,String password,HttpServletResponse response) throws IOException{
+	PrintWriter out=response.getWriter();
+	User user=new User();
+	user.setUsername(username);
+	user.setPassword(password);
+	//将对象转换成json对象，再将json对象转换成字符串的方法，需要使用到json-lib-*-jdk.jar
+	JSONObject json=JSONObject.fromObject(user);
+	String jsonString=json.toString();
+	out.write(jsonString);
+/*	
+ * 将json字符串转换成对象
+ * JSONObject json1=JSONObject.fromObject(jsonString);
+	User user1=(User)json1.toBean(json1,User.class);*/
+}
 
 }
