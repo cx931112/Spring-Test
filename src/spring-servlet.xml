@@ -22,7 +22,11 @@
  		<property name="prefix" value="/WEB-INF/"></property> 
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
+<!--     <mvc:view-controller path="/showRegist" view-name="regist"/> -->
+<!--一般除了对静态资源的访问的请求都会进入Controller,配置该选项之后用户只要满足下列条件的请求就会直接进入到viewResolver不会进入controller  -->
+<!--ps:WEB-INF下的静态资源通过url是不能被外界访问的  -->
+
+	<mvc:view-controller path="/showSuccess" view-name="showsuccess"/>
 
 	
 </beans>
